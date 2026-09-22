@@ -54,6 +54,18 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "purchase_confidence": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "truck",
+            "heading_1": "Shipping details",
+            "icon_2": "return",
+            "heading_2": "Returns details",
+            "icon_3": "lock",
+            "heading_3": "Payment options"
+          }
         }
       },
       "block_order": [
@@ -64,7 +76,8 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share"
+        "share",
+        "purchase_confidence"
       ],
       "settings": {
         "enable_sticky_info": true,
