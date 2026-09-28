@@ -1,0 +1,115 @@
+.product-confidence__header {
+  max-width: 72rem;
+  margin-bottom: 3rem;
+}
+
+.product-confidence__heading {
+  margin: 0;
+}
+
+.product-confidence__intro {
+  margin-top: 1rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.product-confidence__intro > :first-child,
+.product-confidence__text > :first-child {
+  margin-top: 0;
+}
+
+.product-confidence__intro > :last-child,
+.product-confidence__text > :last-child {
+  margin-bottom: 0;
+}
+
+.product-confidence__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0;
+}
+
+.product-confidence__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  min-width: 0;
+  height: 100%;
+  padding: 2rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  border-radius: var(--text-boxes-radius);
+  background: transparent;
+}
+
+.product-confidence__icon {
+  flex: 0 0 auto;
+}
+
+.product-confidence__icon-image {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+}
+
+.product-confidence__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+}
+
+.product-confidence__item-heading {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.product-confidence__text {
+  margin-top: 0.8rem;
+  color: rgba(var(--color-foreground), 0.75);
+  overflow-wrap: anywhere;
+}
+
+.product-confidence__link {
+  align-self: flex-start;
+  margin-top: 1.6rem;
+}
+
+.product-confidence__link .svg-wrapper {
+  margin-left: 0.8rem;
+}
+
+@media screen and (min-width: 750px) {
+  .product-confidence__header {
+    margin-bottom: 4rem;
+  }
+
+  .product-confidence__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .product-confidence__item {
+    padding: 2.4rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .product-confidence__list--1 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .product-confidence__list--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-confidence__list--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .product-confidence__list--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

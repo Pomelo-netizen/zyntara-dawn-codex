@@ -82,6 +82,60 @@
         "padding_bottom": 12
       }
     },
+    "product-confidence": {
+      "type": "product-confidence",
+      "blocks": {
+        "shipping_information": {
+          "type": "item",
+          "settings": {
+            "heading": "Shipping information",
+            "text": "<p>Review the available shipping information before placing your order.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "returns_information": {
+          "type": "item",
+          "settings": {
+            "heading": "Returns information",
+            "text": "<p>Review the applicable return information for this product.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "payment_information": {
+          "type": "item",
+          "settings": {
+            "heading": "Payment information",
+            "text": "<p>Review the available payment methods during checkout.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "customer_support": {
+          "type": "item",
+          "settings": {
+            "heading": "Customer support",
+            "text": "<p>Contact us if you need help with this product.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "shipping_information",
+        "returns_information",
+        "payment_information",
+        "customer_support"
+      ],
+      "settings": {
+        "heading": "Purchase information",
+        "text": "<p>Review the available information before placing your order.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "disclosures": {
       "type": "disclosures",
       "settings": {
@@ -110,6 +164,7 @@
   },
   "order": [
     "main",
+    "product-confidence",
     "disclosures",
     "related-products"
   ]
