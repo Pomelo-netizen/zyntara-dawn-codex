@@ -89,6 +89,67 @@
         "padding_bottom": 0
       }
     },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "product_options": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I choose the right product option?",
+            "icon": "question_mark",
+            "row_content": "<p>Review the available product options, descriptions, and selection details shown on this page before adding the item to your cart.</p>",
+            "page": ""
+          }
+        },
+        "shipping_information": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Where can I find shipping information?",
+            "icon": "question_mark",
+            "row_content": "<p>Review the shipping information published by the store before placing your order. Available methods and timing can depend on the destination and current store configuration.</p>",
+            "page": ""
+          }
+        },
+        "returns_information": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Where can I find returns information?",
+            "icon": "question_mark",
+            "row_content": "<p>Review the store's published returns information for eligibility, item condition, required steps, and other applicable details.</p>",
+            "page": ""
+          }
+        },
+        "customer_support": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How can I contact customer support?",
+            "icon": "question_mark",
+            "row_content": "<p>Use the contact information provided by the store if you need help with this product or an order.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_options",
+        "shipping_information",
+        "returns_information",
+        "customer_support"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Frequently asked questions",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "none",
+        "container_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -111,6 +172,7 @@
   "order": [
     "main",
     "disclosures",
+    "faq",
     "related-products"
   ]
 }
