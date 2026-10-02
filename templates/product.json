@@ -89,6 +89,44 @@
         "padding_bottom": 0
       }
     },
+    "shipping_returns": {
+      "type": "shipping-returns",
+      "blocks": {
+        "shipping_information": {
+          "type": "policy",
+          "settings": {
+            "icon": "truck",
+            "heading": "Shipping information",
+            "text": "<p>Review the shipping information published by the store. Available methods, costs, and timing can depend on the destination and current store configuration.</p>",
+            "page": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "returns_information": {
+          "type": "policy",
+          "settings": {
+            "icon": "return",
+            "heading": "Returns information",
+            "text": "<p>Review the store's published returns information for eligibility, item condition, required steps, and other applicable details.</p>",
+            "page": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "shipping_information",
+        "returns_information"
+      ],
+      "settings": {
+        "heading": "Shipping & returns",
+        "text": "<p>Review the store's published policies before placing your order.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -111,6 +149,7 @@
   "order": [
     "main",
     "disclosures",
+    "shipping_returns",
     "related-products"
   ]
 }

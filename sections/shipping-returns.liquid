@@ -1,0 +1,248 @@
+{{ 'section-shipping-returns.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.heading != blank or section.settings.text != blank or section.blocks.size > 0 -%}
+  <div class="shipping-returns color-{{ section.settings.color_scheme }} gradient">
+    <div class="shipping-returns__inner page-width section-{{ section.id }}-padding">
+      {%- if section.settings.heading != blank or section.settings.text != blank -%}
+        <div class="shipping-returns__header">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="shipping-returns__heading title inline-richtext h1">
+              {{ section.settings.heading }}
+            </h2>
+          {%- endif -%}
+
+          {%- if section.settings.text != blank -%}
+            <div class="shipping-returns__intro rte">
+              {{ section.settings.text }}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="shipping-returns__list list-unstyled" role="list">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign policy_page = block.settings.page
+              assign policy_url = block.settings.link
+              assign policy_label = block.settings.link_label
+
+              if policy_page != blank
+                assign policy_url = policy_page.url
+                if policy_label == blank
+                  assign policy_label = policy_page.title
+                endif
+              endif
+            -%}
+
+            <li
+              class="shipping-returns__item{% if block.settings.icon == 'none' %} shipping-returns__item--no-icon{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.icon != 'none' -%}
+                <div class="shipping-returns__icon" aria-hidden="true">
+                  {% render 'icon-accordion', icon: block.settings.icon %}
+                </div>
+              {%- endif -%}
+
+              <div class="shipping-returns__content">
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="shipping-returns__item-heading h3 inline-richtext">
+                    {{ block.settings.heading }}
+                  </h3>
+                {%- endif -%}
+
+                {%- if block.settings.text != blank -%}
+                  <div class="shipping-returns__text rte">
+                    {{ block.settings.text }}
+                  </div>
+                {%- endif -%}
+
+                {%- if policy_label != blank -%}
+                  <a
+                    class="shipping-returns__link link animate-arrow"
+                    {% if policy_url == blank %}
+                      role="link"
+                      aria-disabled="true"
+                    {% else %}
+                      href="{{ policy_url }}"
+                    {% endif %}
+                  >
+                    {{- policy_label | escape -}}
+                    <span class="svg-wrapper">
+                      {{- 'icon-arrow.svg' | inline_asset_content -}}
+                    </span>
+                  </a>
+                {%- endif -%}
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Shipping & returns",
+  "tag": "section",
+  "class": "section section-shipping-returns",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shipping & returns"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Introduction",
+      "default": "<p>Review the store's published policies before placing your order.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "policy",
+      "name": "Policy item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "box",
+              "label": "Box"
+            },
+            {
+              "value": "map_pin",
+              "label": "Map pin"
+            },
+            {
+              "value": "plane",
+              "label": "Plane"
+            },
+            {
+              "value": "question_mark",
+              "label": "Question mark"
+            },
+            {
+              "value": "return",
+              "label": "Return"
+            },
+            {
+              "value": "truck",
+              "label": "Truck"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Policy information"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Summary",
+          "default": "<p>Add a merchant-approved summary or connect a compatible product metafield.</p>"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Policy page"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Custom link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shipping & returns",
+      "blocks": [
+        {
+          "type": "policy",
+          "settings": {
+            "icon": "truck",
+            "heading": "Shipping information",
+            "text": "<p>Review the shipping information published by the store. Available methods, costs, and timing can depend on the destination and current store configuration.</p>"
+          }
+        },
+        {
+          "type": "policy",
+          "settings": {
+            "icon": "return",
+            "heading": "Returns information",
+            "text": "<p>Review the store's published returns information for eligibility, item condition, required steps, and other applicable details.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
